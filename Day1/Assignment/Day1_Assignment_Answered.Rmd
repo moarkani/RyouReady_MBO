@@ -1,0 +1,76 @@
+---
+title: "Day1_Assignment_Answered"
+author: "Molecular Biology and Oncology"
+date: "2023-01-03"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## Assignments:
+
+### Assignment **1 (Calculating GC content)**
+
+Calculate GC content.
+
+Here's a short DNA sequence:
+
+`ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGG`
+
+`TGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCT`
+
+`TGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGG`
+
+`AAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTG`
+
+`CAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA`
+
+Write a program that will print out the G and C content of this DNA sequence.
+
+Please clearly answer:
+
+1.  How many G is in this DNA seq?
+
+2.  How many C is in this DNA seq?
+
+3.  How many percentages of this DNA seq included G and C?
+
+Hint: you can use normal mathematical symbols like add (+), subtract (-), multiply (\*), divide (/), and parentheses to carry out calculations on numbers in R.
+
+#### Solution1
+
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+```{r}
+my_dna <- "ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA"
+dna_count<- str_length(my_dna)
+
+dna_count
+
+G_Counts <- str_count(my_dna, "G")
+C_Counts <- str_count(my_dna, "C")
+total <- str_length(my_dna)
+str_c("Number of G in this DNA is ", G_Counts)
+str_c("Number of C in this DNA is ", C_Counts)
+# calculating the ratio of A and T in this DNA seq
+(G_Counts + C_Counts)/total *100
+```
+
+### Assignment 2 (Complementing DNA)
+
+Use DNA sequence from Assignmnet 1:
+
+Write a program that will print the complement of this sequence.
+
+This one seems pretty straightforward -- we need to take our sequence and replace A with T, T with A, C with G, and G with C.
+
+#### Solution2
+
+```{r}
+
+dna <- str_replace_all(my_dna, c("A" = "t", "C" ="g", "G"= "c", "T"= "a"))
+toupper(dna)
+dna <- toupper(dna)
+```
