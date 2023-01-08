@@ -1,0 +1,78 @@
+---
+title: "Day2_Assignment_Answered"
+author: "Molecular Biology and Oncology"
+date: "2023-01-03"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+Preparation
+
+```{r, message=FALSE}
+library(tidyverse)
+library(htmlwidgets)
+```
+
+## Assignment1:
+
+Here's a short DNA sequence:
+
+`ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT`
+
+The sequence contains a recognition site for the EcoRI restriction enzyme, which cuts at the motif G\*AATTC (the position of the cut is indicated by an asterisk).
+
+Write a program which will calculate the size of the two fragments that will be produced when the DNA sequence is digested with EcoRI.
+
+### Solution1:
+
+```{r}
+my_dna <- "ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"
+
+str_view(my_dna, "GAATTC")
+```
+
+```{r}
+# Extract 1st element
+First_L <- str_split(my_dna, pattern = "GAATTC")[[1]][1]            
+First_L
+# Calculate 1st seq length (+G)
+First_L_all <- str_length(First_L) + 1 
+First_L_all
+# Extract 2nd string and 1st element
+Second_L <- str_split(my_dna, pattern = "GAATTC")[[1]][2]     
+Second_L
+
+# Calculate 2nd seq length (+AATTC)
+Second_L_all <- str_length(Second_L) + 5  
+
+Second_L_all
+str_c("The length of first fragment is ",First_L_all, " The lenght of Second fragment is ", Second_L_all )
+```
+
+## Assignment2:
+
+Here's a short section of RNA:
+
+`UAGCUAGCUAGCUAGCUGACUGAUCAGUAUCGAUACGUACAUCGAUGAGCUAGCUAGCUAG`
+
+`CUAGCUAGCUAGCUAGCUAGCUAGUACGAUAGUAGCUAGCUAUAGCUACGUAGCUGAUGAUA`
+
+It comprises two exons and an intron. The first exon runs from the start of the sequence to the 63 character, and the second exon runs from the 91 character to the end of the sequence. Write a program that will print just the coding regions of the RNA sequence. Then report the length of spliced RNA.
+
+### Solution2:
+
+```{r}
+my_RNA <- "UAGCUAGCUAGCUAGCUGACUGAUCAGUAUCGAUACGUACAUCGAUGAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGUACGAUAGUAGCUAGCUAUAGCUACGUAGCUGAUGAUA"
+
+
+RNA_count<- str_length(my_RNA)
+RNA_count
+exon1 <- str_sub(my_RNA, 1, 63)   
+exon2 <- str_sub(my_RNA, 91)
+
+str_c(exon1, exon2, sep= "")
+
+RNA_AfterSplicing <- str_c(exon1, exon2, sep= "")
+str_length(RNA_AfterSplicing)
+```

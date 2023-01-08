@@ -1,0 +1,60 @@
+---
+title: "Day1_Assignment"
+author: "Molecular Biology and Oncology"
+date: "2023-01-03"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## Assignment1:
+
+### Assignment **1 (Calculating GC content)**
+
+Calculate GC content.
+
+Here's a short DNA sequence:
+
+`ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGG`
+
+`TGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCT`
+
+`TGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGG`
+
+`AAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTG`
+
+`CAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA`
+
+Write a program that will print out the G and C content of this DNA sequence.
+
+Please clearly answer:
+
+1.  How many G is in this DNA seq?
+
+2.  How many C is in this DNA seq?
+
+3.  What percentages of this DNA seq included G and C?
+
+Hint: you can use normal mathematical symbols like add (+), subtract (-), multiply (\*), divide (/), and parentheses to carry out calculations on numbers in R.
+
+#### Solution1
+
+```{r}
+#my_dna <- ...
+
+```
+
+### Assignment 2 (Complementing DNA)
+
+Use DNA sequence from Assignmnet 1:
+
+Write a program that will print the complement of this sequence.
+
+This one seems pretty straightforward -- we need to take our sequence and replace A with T, T with A, C with G, and G with C. We'll have to make four separate calls to replace, and use the return value for each on as the input for the next tone.
+
+#### Solution 2
+
+```{r}
+
+#my_cDNA <- ...
+```
