@@ -13,7 +13,7 @@
 
 <meta name="date" content="2023-01-03" />
 
-<title>Day1_Assignment_Answered</title>
+<title>Day2_Practice</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -230,8 +230,6 @@ window.initializeCodeFolding = function(show) {
   // select all R code blocks
   var rCodeBlocks = $('pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.julia, pre.foldable');
   rCodeBlocks.each(function() {
-    // skip if the block has fold-none class
-    if ($(this).hasClass('fold-none')) return;
 
     // create a collapsable div to wrap the code in
     var div = $('<div class="collapse r-code-collapse"></div>');
@@ -247,9 +245,7 @@ window.initializeCodeFolding = function(show) {
     showCodeButton.append(showCodeText);
     showCodeButton
         .attr('data-toggle', 'collapse')
-        .attr('data-bs-toggle', 'collapse') // BS5
         .attr('data-target', '#' + id)
-        .attr('data-bs-target', '#' + id)   // BS5
         .attr('aria-expanded', showThis)
         .attr('aria-controls', id);
 
@@ -333,7 +329,6 @@ if (window.hljs) {
 
 
 
-
 <style type="text/css">
 .main-container {
   max-width: 940px;
@@ -355,9 +350,6 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
-details > summary > p:only-child {
-  display: inline;
-}
 pre code {
   padding: 0;
 }
@@ -377,8 +369,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -386,9 +378,16 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
+  content: "";
   border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -435,7 +434,7 @@ pre code {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -444,63 +443,174 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Day1_Assignment_Answered</h1>
+<h1 class="title toc-ignore">Day2_Practice</h1>
 <h4 class="author">Molecular Biology and Oncology</h4>
 <h4 class="date">2023-01-03</h4>
 
 </div>
 
 
-<div id="assignments" class="section level2">
-<h2>Assignments:</h2>
-<div id="assignment-1-calculating-gc-content" class="section level3">
-<h3>Assignment <strong>1 (Calculating GC content)</strong></h3>
-<p>Calculate GC content.</p>
-<p>Here’s a short DNA sequence:</p>
-<p><code>ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGG</code></p>
-<p><code>TGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCT</code></p>
-<p><code>TGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGG</code></p>
-<p><code>AAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTG</code></p>
-<p><code>CAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA</code></p>
-<p>Write a program that will print out the G and C content of this DNA
-sequence.</p>
-<p>Please clearly answer:</p>
-<ol style="list-style-type: decimal">
-<li><p>How many G is in this DNA seq?</p></li>
-<li><p>How many C is in this DNA seq?</p></li>
-<li><p>How many percentages of this DNA seq included G and C?</p></li>
-</ol>
-<p>Hint: you can use normal mathematical symbols like add (+), subtract
-(-), multiply (*), divide (/), and parentheses to carry out calculations
-on numbers in R.</p>
-<div id="solution1" class="section level4">
-<h4>Solution1</h4>
-<pre class="r fold-hide"><code>my_dna &lt;- &quot;ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA&quot;
-dna_count&lt;- str_length(my_dna)
+<p>Preparation</p>
+<div id="exercise-2.a" class="section level2">
+<h2>Exercise 2.a:</h2>
+<p>There are two strings of DNA. How many <code>ATG</code>s are in each
+sequence? Show them?</p>
+<p><code>ACATGTCATGTCC</code> and <code>CTTGTATGCTG</code></p>
+<div id="solution-2.a" class="section level3">
+<h3>Solution 2.a:</h3>
+<pre class="r fold-hide"><code>sequences&lt;-c(&quot;ACATGTCATGTCC&quot;,&quot;CTTGTATGCTG&quot;)
+str_count(sequences, &quot;ATG&quot;)
+str_view_all(sequences, &quot;ATG&quot;)</code></pre>
+</div>
+</div>
+<div id="exercise-2.b" class="section level2">
+<h2>Exercise 2.b:</h2>
+<p>We have three sequence of DNA.</p>
+<p><code>&quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;</code></p>
+<p><code>&quot;ACTTGAATTCTTCAGCTGAGATTCGG&quot;</code></p>
+<p><code>&quot;ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC&quot;</code></p>
+<p>Write a program to locate the position of the EcorI (GAATTC)
+Restriction Enzyme Zone.</p>
+<div id="solution-2.b" class="section level3">
+<h3>Solution 2.b:</h3>
+<pre class="r fold-hide"><code>my_dna &lt;- c(&quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;, &quot;ACTTGAATTCTTCAGCTGAGATTCGG&quot;, &quot;ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC&quot;)
+str_locate_all(my_dna, &quot;GAATTC&quot;)</code></pre>
+</div>
+</div>
+<div id="exercise-2.c" class="section level2">
+<h2>Exercise 2.c:</h2>
+<p>Let’s split the RNA string(below) to their codons (split based on the
+spaces).</p>
+<p>Next, extract and assign each codon to a different name.</p>
+<p><code>AAC UCG UGG CCA GAC</code></p>
+<div id="solution-2.c" class="section level3">
+<h3>Solution 2.c:</h3>
+<pre class="r fold-hide"><code>codons &lt;- &quot;AAC UCG UGG CCA GAC&quot;
+codons &lt;- str_split(codons, pattern = &quot; &quot;)
+codons</code></pre>
+<pre class="r fold-hide"><code>cod1 &lt;-codons[[1]][1]
+cod1
+cod2 &lt;-codons[[1]][2]
+cod2
+cod3 &lt;-codons[[1]][3]
+cod3
+cod4 &lt;-codons[[1]][4]
+cod4
+cod5 &lt;-codons[[1]][5]
+cod5</code></pre>
+</div>
+</div>
+<div id="exercise-2.d" class="section level2">
+<h2>Exercise 2.d:</h2>
+<p>You have a DNA string. How many RE sites did you find? Write a
+program which able to simulate the EcorI <code>GAATTC</code> EcorI RE
+function.</p>
+<p><code>&quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATTCGATGCGTTCATAC</code></p>
+<p><code>TGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;</code></p>
+<p><em>Please always check how many restriction enzyme sites exist in
+the fragment. <code>str_count()</code></em>Solution 2.d:</p>
+<pre class="r fold-hide"><code>DNA &lt;- &quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATTCGATGCGTTCATACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;
 
-dna_count
+str_count(DNA, &quot;GAATTC&quot;)
 
-G_Counts &lt;- str_count(my_dna, &quot;G&quot;)
-C_Counts &lt;- str_count(my_dna, &quot;C&quot;)
-total &lt;- str_length(my_dna)
-str_c(&quot;Number of G in this DNA is &quot;, G_Counts)
-str_c(&quot;Number of C in this DNA is &quot;, C_Counts)
-# calculating the ratio of A and T in this DNA seq
-(G_Counts + C_Counts)/total *100</code></pre>
+str_split(DNA, &quot;GAATTC&quot;)[[1]][1]
+FirstSeq &lt;- str_length(str_split(DNA, &quot;GAATTC&quot;)[[1]][1])+1
+FirstSeq
+str_split(DNA, &quot;GAATTC&quot;)[[1]][2]
+SecondSeq&lt;- str_length(str_split(DNA, &quot;GAATTC&quot;)[[1]][2]) + 6
+SecondSeq
+str_split(DNA, &quot;GAATTC&quot;)[[1]][3]
+ThirdSeq &lt;- str_length(str_split(DNA, &quot;GAATTC&quot;)[[1]][3]) + 5
+ThirdSeq</code></pre>
+</div>
+<div id="exercise-2.d-1" class="section level2">
+<h2>Exercise 2.d:</h2>
+<p>You have a DNA string. How many RE sites did you find? Write a
+program which able to simulate the EcorI <code>GAATTC</code> EcorI RE
+function.</p>
+<p><code>&quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATTCGATGCGTTCATAC</code></p>
+<p><code>TGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;</code></p>
+<p><em>Please always check how many restriction enzyme sites exist in
+the fragment. <code>str_count()</code></em></p>
+<div id="solution-2.d" class="section level3">
+<h3>Solution 2.d:</h3>
+<pre class="r fold-hide"><code>my_dna &lt;- c(&quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;, 
+            &quot;ACTTGAATTCTTCAGCTGAGATTCGG&quot;, 
+            &quot;ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC&quot;)
+
+str_count(my_dna, &quot;GAATTC&quot;) #Count number of RE in each string</code></pre>
+<pre class="r fold-hide"><code>#Split each DNA string
+str_split(my_dna, &quot;GAATTC&quot;)
+##First DNA
+#Split + count the 1st lenght in 1st DNA 
+FirstStr_1stDNA &lt;- str_length(str_split(my_dna, &quot;GAATTC&quot;)[[1]][1])+1
+FirstStr_1stDNA
+
+#Split + count the 2nd lenght in 1st DNA 
+ScondStr_1stDNA &lt;- str_length(str_split(my_dna, &quot;GAATTC&quot;)[[1]][2]) + 6
+ScondStr_1stDNA
+
+
+##Second DNA
+#Split + count the 1st lenght in 2nd DNA 
+FirstStr_2ndDNA &lt;- str_length(str_split(my_dna, &quot;GAATTC&quot;)[[2]][1])+1
+FirstStr_2ndDNA
+#Split + count the 2nd lenght in 2nd DNA 
+ScondStr_1stDNA &lt;- str_length(str_split(my_dna, &quot;GAATTC&quot;)[[2]][2]) + 5
+ScondStr_1stDNA
+
+
+##Third DNA
+#Split + count the 1st lenght in 3rd DNA 
+FirstStr_3rdDNA &lt;- str_length(str_split(my_dna, &quot;GAATTC&quot;)[[3]][1])+1
+FirstStr_3rdDNA
+#Split + count the 2nd lenght in 3rd DNA 
+ScondStr_3rdDNA &lt;- str_length(str_split(my_dna, &quot;GAATTC&quot;)[[3]][2]) + 5
+ScondStr_3rdDNA</code></pre>
 </div>
 </div>
-<div id="assignment-2-complementing-dna" class="section level3">
-<h3>Assignment 2 (Complementing DNA)</h3>
-<p>Use DNA sequence from Assignmnet 1:</p>
-<p>Write a program that will print the complement of this sequence.</p>
-<p>This one seems pretty straightforward – we need to take our sequence
-and replace A with T, T with A, C with G, and G with C.</p>
-<div id="solution2" class="section level4">
-<h4>Solution2</h4>
-<pre class="r fold-hide"><code>dna &lt;- str_replace_all(my_dna, c(&quot;A&quot; = &quot;t&quot;, &quot;C&quot; =&quot;g&quot;, &quot;G&quot;= &quot;c&quot;, &quot;T&quot;= &quot;a&quot;))
-toupper(dna)
-dna &lt;- toupper(dna)</code></pre>
+<div id="exercise-2.e" class="section level2">
+<h2>Exercise 2.e:</h2>
+<p>There are Three sequences of DNA.</p>
+<p>How many RE sites did you find? Write a program which able to
+simulate the EcorI GAATTC EcorI RE function.</p>
+<p>Cut all DNA strings and calculate the length of DNA seq.</p>
+<p><code>&quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;</code></p>
+<p><code>&quot;ACTTGAATTCTTCAGCTGAGATTCGG&quot;</code></p>
+<p><code>&quot;ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC&quot;</code></p>
+<p><em>Please always check how many restriction enzyme sites are exist
+in the fragment. <code>str_count()</code></em></p>
+<div id="solution-2.e" class="section level3">
+<h3>Solution 2.e:</h3>
+<pre class="r fold-hide"><code>my_dna &lt;- c(&quot;ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT&quot;, 
+            &quot;ACTTGAATTCTTCAGCTGAGATTCGG&quot;, 
+            &quot;ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC&quot;)
+
+str_count(my_dna, &quot;GAATTC&quot;)
+
+str_split(my_dna, pattern = &quot;GAATTC&quot;)[[1]][1]            # Extract first string and 1st element
+str_length(str_split(my_dna, &quot;GAATTC&quot;)[[1]][1])            # Extract first string and 1st element
+
+str_split(my_dna, pattern = &quot;GAATTC&quot;)[[1]][2]            # Extract second string and 1st element
+str_split(my_dna, pattern = &quot;GAATTC&quot;)[[2]][1]            # Extract second string and 1st element
+str_split(my_dna, pattern = &quot;GAATTC&quot;)[[2]][2]            # Extract second string and 2nd element</code></pre>
 </div>
+</div>
+<div id="exercise-2.f" class="section level2">
+<h2>Exercise 2.f:</h2>
+<p>There is a string of DNA. We are interested in selecting locations
+9-15 and 22-30. After selecting them, create new strings which include
+these two selected strings.</p>
+<p><code>ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT</code></p>
+<div id="solution-2.f" class="section level3">
+<h3>Solution 2.f:</h3>
+<pre class="r fold-hide"><code>DNA&lt;- &quot;ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT&quot;
+A &lt;- str_sub(DNA, 9, 15)
+B &lt;- str_sub(DNA, 22, 30)
+
+A
+B
+str_c(A, B)</code></pre>
 </div>
 </div>
 

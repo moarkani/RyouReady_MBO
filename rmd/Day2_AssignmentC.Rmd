@@ -1,6 +1,7 @@
 ---
 title: "Day2_Assignment"
 author: "Molecular Biology and Oncology"
+date: "2023-01-03"
 output:
   html_document: default
   pdf_document: default
@@ -16,7 +17,7 @@ library(tidyverse)
 
 Here's a short DNA sequence:
 
-`ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT`
+"ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"
 
 The sequence contains a recognition site for the EcoRI restriction enzyme, which cuts at the motif G\*AATTC (the position of the cut is indicated by an asterisk).
 
@@ -32,9 +33,7 @@ Write a program which will calculate the size of the two fragments that will be 
 
 Here's a short section of RNA:
 
-`UAGCUAGCUAGCUAGCUGACUGAUCAGUAUCGAUACGUACAUCGAUGAGCUAGCUAGCUAG`
-
-`CUAGCUAGCUAGCUAGCUAGCUAGUACGAUAGUAGCUAGCUAUAGCUACGUAGCUGAUGAUA`
+"UAGCUAGCUAGCUAGCUGACUGAUCAGUAUCGAUACGUACAUCGAUGAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGUACGAUAGUAGCUAGCUAUAGCUACGUAGCUGAUGAUA"
 
 It comprises two exons and an intron. The first exon runs from the start of the sequence to the 63 character, and the second exon runs from the 91 character to the end of the sequence. Write a program that will print just the coding regions of the RNA sequence. Then report the length of spliced RNA.
 

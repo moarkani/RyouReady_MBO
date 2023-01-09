@@ -1,0 +1,221 @@
+---
+title: "Day2_Practice"
+author: "Molecular Biology and Oncology"
+date: "2023-01-03"
+output:
+  html_document: 
+      code_folding: show
+---
+
+
+
+
+Preparation
+
+```{r, results='hide',include=FALSE, class.source = "fold-show"}
+library(tidyverse)
+```
+
+## Exercise 2.a:
+
+There are two strings of DNA. How many `ATG`s are in each sequence? Show
+them?
+
+`ACATGTCATGTCC` and `CTTGTATGCTG`
+
+### Solution 2.a:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+sequences<-c("ACATGTCATGTCC","CTTGTATGCTG")
+str_count(sequences, "ATG")
+str_view_all(sequences, "ATG")
+```
+
+## Exercise 2.b:
+
+We have three sequence of DNA.
+
+`"ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"`
+
+`"ACTTGAATTCTTCAGCTGAGATTCGG"`
+
+`"ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC"`
+
+Write a program to locate the position of the EcorI (GAATTC) Restriction
+Enzyme Zone.
+
+### Solution 2.b:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+my_dna <- c("ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT", "ACTTGAATTCTTCAGCTGAGATTCGG", "ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC")
+str_locate_all(my_dna, "GAATTC")
+
+```
+
+## Exercise 2.c:
+
+Let's split the RNA string(below) to their codons (split based on the
+spaces).
+
+Next, extract and assign each codon to a different name.
+
+`AAC UCG UGG CCA GAC`
+
+### Solution 2.c:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+
+codons <- "AAC UCG UGG CCA GAC"
+codons <- str_split(codons, pattern = " ")
+codons
+```
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+cod1 <-codons[[1]][1]
+cod1
+cod2 <-codons[[1]][2]
+cod2
+cod3 <-codons[[1]][3]
+cod3
+cod4 <-codons[[1]][4]
+cod4
+cod5 <-codons[[1]][5]
+cod5
+```
+
+## Exercise 2.d:
+
+You have a DNA string. How many RE sites did you find? Write a program
+which able to simulate the EcorI `GAATTC` EcorI RE function.
+
+`"ACTGATCGATTACGTATAGTAGAATTCTATCATACATTCGATGCGTTCATAC`
+
+`TGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"`
+
+*Please always check how many restriction enzyme sites exist in the
+fragment. `str_count()`*Solution 2.d:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+DNA <- "ACTGATCGATTACGTATAGTAGAATTCTATCATACATTCGATGCGTTCATACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"
+
+str_count(DNA, "GAATTC")
+
+str_split(DNA, "GAATTC")[[1]][1]
+FirstSeq <- str_length(str_split(DNA, "GAATTC")[[1]][1])+1
+FirstSeq
+str_split(DNA, "GAATTC")[[1]][2]
+SecondSeq<- str_length(str_split(DNA, "GAATTC")[[1]][2]) + 6
+SecondSeq
+str_split(DNA, "GAATTC")[[1]][3]
+ThirdSeq <- str_length(str_split(DNA, "GAATTC")[[1]][3]) + 5
+ThirdSeq
+```
+
+## Exercise 2.d:
+
+You have a DNA string. How many RE sites did you find? Write a program
+which able to simulate the EcorI `GAATTC` EcorI RE function.
+
+`"ACTGATCGATTACGTATAGTAGAATTCTATCATACATTCGATGCGTTCATAC`
+
+`TGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"`
+
+*Please always check how many restriction enzyme sites exist in the
+fragment. `str_count()`*
+
+### Solution 2.d:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+my_dna <- c("ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT", 
+            "ACTTGAATTCTTCAGCTGAGATTCGG", 
+            "ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC")
+
+str_count(my_dna, "GAATTC") #Count number of RE in each string
+```
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+#Split each DNA string
+str_split(my_dna, "GAATTC")
+##First DNA
+#Split + count the 1st lenght in 1st DNA 
+FirstStr_1stDNA <- str_length(str_split(my_dna, "GAATTC")[[1]][1])+1
+FirstStr_1stDNA
+
+#Split + count the 2nd lenght in 1st DNA 
+ScondStr_1stDNA <- str_length(str_split(my_dna, "GAATTC")[[1]][2]) + 6
+ScondStr_1stDNA
+
+
+##Second DNA
+#Split + count the 1st lenght in 2nd DNA 
+FirstStr_2ndDNA <- str_length(str_split(my_dna, "GAATTC")[[2]][1])+1
+FirstStr_2ndDNA
+#Split + count the 2nd lenght in 2nd DNA 
+ScondStr_1stDNA <- str_length(str_split(my_dna, "GAATTC")[[2]][2]) + 5
+ScondStr_1stDNA
+
+
+##Third DNA
+#Split + count the 1st lenght in 3rd DNA 
+FirstStr_3rdDNA <- str_length(str_split(my_dna, "GAATTC")[[3]][1])+1
+FirstStr_3rdDNA
+#Split + count the 2nd lenght in 3rd DNA 
+ScondStr_3rdDNA <- str_length(str_split(my_dna, "GAATTC")[[3]][2]) + 5
+ScondStr_3rdDNA
+
+```
+
+## Exercise 2.e:
+
+There are Three sequences of DNA.
+
+How many RE sites did you find? Write a program which able to simulate
+the EcorI GAATTC EcorI RE function.
+
+Cut all DNA strings and calculate the length of DNA seq.
+
+`"ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"`
+
+`"ACTTGAATTCTTCAGCTGAGATTCGG"`
+
+`"ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC"`
+
+*Please always check how many restriction enzyme sites are exist in the
+fragment. `str_count()`*
+
+### Solution 2.e:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+my_dna <- c("ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT", 
+            "ACTTGAATTCTTCAGCTGAGATTCGG", 
+            "ATCGGGTTAATACGTGAATTCAGGCTGATCGTGTAGCTTGGATCC")
+
+str_count(my_dna, "GAATTC")
+
+str_split(my_dna, pattern = "GAATTC")[[1]][1]            # Extract first string and 1st element
+str_length(str_split(my_dna, "GAATTC")[[1]][1])            # Extract first string and 1st element
+
+str_split(my_dna, pattern = "GAATTC")[[1]][2]            # Extract second string and 1st element
+str_split(my_dna, pattern = "GAATTC")[[2]][1]            # Extract second string and 1st element
+str_split(my_dna, pattern = "GAATTC")[[2]][2]            # Extract second string and 2nd element
+```
+
+## Exercise 2.f:
+
+There is a string of DNA. We are interested in selecting locations 9-15
+and 22-30. After selecting them, create new strings which include these
+two selected strings.
+
+`ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT`
+
+### Solution 2.f:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+DNA<- "ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT"
+A <- str_sub(DNA, 9, 15)
+B <- str_sub(DNA, 22, 30)
+
+A
+B
+str_c(A, B)
+```

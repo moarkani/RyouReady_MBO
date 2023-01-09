@@ -13,7 +13,7 @@
 
 <meta name="date" content="2023-01-03" />
 
-<title>Day1_Assignment_Answered</title>
+<title>Day1_Practice</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -230,8 +230,6 @@ window.initializeCodeFolding = function(show) {
   // select all R code blocks
   var rCodeBlocks = $('pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.julia, pre.foldable');
   rCodeBlocks.each(function() {
-    // skip if the block has fold-none class
-    if ($(this).hasClass('fold-none')) return;
 
     // create a collapsable div to wrap the code in
     var div = $('<div class="collapse r-code-collapse"></div>');
@@ -247,9 +245,7 @@ window.initializeCodeFolding = function(show) {
     showCodeButton.append(showCodeText);
     showCodeButton
         .attr('data-toggle', 'collapse')
-        .attr('data-bs-toggle', 'collapse') // BS5
         .attr('data-target', '#' + id)
-        .attr('data-bs-target', '#' + id)   // BS5
         .attr('aria-expanded', showThis)
         .attr('aria-controls', id);
 
@@ -333,7 +329,6 @@ if (window.hljs) {
 
 
 
-
 <style type="text/css">
 .main-container {
   max-width: 940px;
@@ -355,9 +350,6 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
-details > summary > p:only-child {
-  display: inline;
-}
 pre code {
   padding: 0;
 }
@@ -377,8 +369,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -386,9 +378,16 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
+  content: "";
   border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -435,7 +434,7 @@ pre code {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -444,64 +443,76 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Day1_Assignment_Answered</h1>
+<h1 class="title toc-ignore">Day1_Practice</h1>
 <h4 class="author">Molecular Biology and Oncology</h4>
 <h4 class="date">2023-01-03</h4>
 
 </div>
 
 
-<div id="assignments" class="section level2">
-<h2>Assignments:</h2>
-<div id="assignment-1-calculating-gc-content" class="section level3">
-<h3>Assignment <strong>1 (Calculating GC content)</strong></h3>
-<p>Calculate GC content.</p>
-<p>Here’s a short DNA sequence:</p>
-<p><code>ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGG</code></p>
-<p><code>TGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCT</code></p>
-<p><code>TGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGG</code></p>
-<p><code>AAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTG</code></p>
-<p><code>CAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA</code></p>
-<p>Write a program that will print out the G and C content of this DNA
+<p>Preparation:</p>
+<div id="exercise-1.a" class="section level2">
+<h2><strong>Exercise 1.a:</strong></h2>
+<p>There are Four genetic codons(3 nucleotides). Print them all together
+and with a semicolon (;) as a separator.</p>
+<p>Codon1: “ACG”</p>
+<p>Codon2: “CGU”</p>
+<p>Codon3: “UUG”</p>
+<p>Codon4: “CCG”</p>
+<p>##Solution1.a:</p>
+<pre class="r fold-hide"><code>Codon1 &lt;- &quot;ACG&quot;
+
+Codon2 &lt;- &quot;CGU&quot;
+
+Codon3 &lt;- &quot;UUG&quot;
+
+Codon4 &lt;- &quot;CCG&quot;
+
+str_c(Codon1, Codon2, Codon3, Codon4, sep = &quot;;&quot;)</code></pre>
+</div>
+<div id="exercise-1.b" class="section level2">
+<h2>Exercise 1.b:</h2>
+<p>There is a sequence of DNA. This DNA string included how many
+nucleotides?</p>
+<p><code>&quot;ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGG</code></p>
+<p><code>GTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGC</code></p>
+<p><code>TTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAG</code></p>
+<p><code>GAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCT</code></p>
+<p><code>GCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA&quot;</code></p>
+<p>##Solution 1.c:</p>
+<pre class="r fold-hide"><code>DNA &lt;- &quot;ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA&quot;
+
+
+str_length(DNA)</code></pre>
+</div>
+<div id="exercise-1.c" class="section level2">
+<h2>Exercise 1.c:</h2>
+<p>Use the DNA from Exercise 1c. This DNA string included how many A, U,
+G, and C?</p>
+<p>How many nucleotides are in this DNA string? Write a program that
+will print out the proportion of A and T content of this DNA
 sequence.</p>
-<p>Please clearly answer:</p>
-<ol style="list-style-type: decimal">
-<li><p>How many G is in this DNA seq?</p></li>
-<li><p>How many C is in this DNA seq?</p></li>
-<li><p>How many percentages of this DNA seq included G and C?</p></li>
-</ol>
-<p>Hint: you can use normal mathematical symbols like add (+), subtract
-(-), multiply (*), divide (/), and parentheses to carry out calculations
-on numbers in R.</p>
-<div id="solution1" class="section level4">
-<h4>Solution1</h4>
-<pre class="r fold-hide"><code>my_dna &lt;- &quot;ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA&quot;
-dna_count&lt;- str_length(my_dna)
-
-dna_count
-
-G_Counts &lt;- str_count(my_dna, &quot;G&quot;)
-C_Counts &lt;- str_count(my_dna, &quot;C&quot;)
-total &lt;- str_length(my_dna)
-str_c(&quot;Number of G in this DNA is &quot;, G_Counts)
-str_c(&quot;Number of C in this DNA is &quot;, C_Counts)
+<p>##Solution 1d:</p>
+<pre class="r fold-hide"><code>A_Counts &lt;- str_count(DNA, &quot;A&quot;)
+A_Counts
+T_Counts &lt;- str_count(DNA, &quot;T&quot;)
+T_Counts
+G_Counts &lt;- str_count(DNA, &quot;G&quot;)
+G_Counts
+C_Counts &lt;- str_count(DNA, &quot;C&quot;)
+C_Counts</code></pre>
+<pre class="r fold-hide"><code>total &lt;- str_length(DNA)
+str_c(&quot;Number of A in this DNA is&quot;, A_Counts)
+str_c(&quot;Number of T in this DNA is&quot;, T_Counts)
 # calculating the ratio of A and T in this DNA seq
-(G_Counts + C_Counts)/total *100</code></pre>
+(A_Counts + T_Counts)/total *100</code></pre>
 </div>
-</div>
-<div id="assignment-2-complementing-dna" class="section level3">
-<h3>Assignment 2 (Complementing DNA)</h3>
-<p>Use DNA sequence from Assignmnet 1:</p>
-<p>Write a program that will print the complement of this sequence.</p>
-<p>This one seems pretty straightforward – we need to take our sequence
-and replace A with T, T with A, C with G, and G with C.</p>
-<div id="solution2" class="section level4">
-<h4>Solution2</h4>
-<pre class="r fold-hide"><code>dna &lt;- str_replace_all(my_dna, c(&quot;A&quot; = &quot;t&quot;, &quot;C&quot; =&quot;g&quot;, &quot;G&quot;= &quot;c&quot;, &quot;T&quot;= &quot;a&quot;))
-toupper(dna)
-dna &lt;- toupper(dna)</code></pre>
-</div>
-</div>
+<div id="exercise-1.e" class="section level2">
+<h2>Exercise 1.e:</h2>
+<p>You have a DNA string(exercise 1.c.). Write a program to be able to
+replace U with T.</p>
+<p>##Solution 1e:</p>
+<pre class="r fold-hide"><code>str_replace_all(DNA, &quot;T&quot;, &quot;U&quot;)</code></pre>
 </div>
 
 

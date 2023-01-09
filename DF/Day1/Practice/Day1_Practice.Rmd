@@ -1,0 +1,103 @@
+---
+title: "Day1_Practice"
+author: "Molecular Biology and Oncology"
+date: "2023-01-03"
+output:
+  html_document: 
+      code_folding: show
+---
+
+
+
+Preparation:
+
+```{r, results='hide',include=FALSE, class.source = "fold-show"}
+library(stringr)
+```
+
+## **Exercise 1.a:**
+
+There are Four genetic codons(3 nucleotides). Print them all together and with a semicolon (;) as a separator.
+
+Codon1: "ACG"
+
+Codon2: "CGU"
+
+Codon3: "UUG"
+
+Codon4: "CCG"
+
+##Solution1.a:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+Codon1 <- "ACG"
+
+Codon2 <- "CGU"
+
+Codon3 <- "UUG"
+
+Codon4 <- "CCG"
+
+str_c(Codon1, Codon2, Codon3, Codon4, sep = ";")
+```
+
+## Exercise 1.b:
+
+There is a sequence of DNA. This DNA string included how many nucleotides?
+
+`"ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGG`
+
+`GTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGC`
+
+`TTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAG`
+
+`GAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCT`
+
+`GCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA"`
+
+##Solution 1.c:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+DNA <- "ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA"
+
+
+str_length(DNA)
+```
+
+## Exercise 1.c:
+
+Use the DNA from Exercise 1c. This DNA string included how many A, U, G, and C?
+
+How many nucleotides are in this DNA string? Write a program that will print out the proportion of A and T content of this DNA sequence.
+
+##Solution 1d:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+
+A_Counts <- str_count(DNA, "A")
+A_Counts
+T_Counts <- str_count(DNA, "T")
+T_Counts
+G_Counts <- str_count(DNA, "G")
+G_Counts
+C_Counts <- str_count(DNA, "C")
+C_Counts
+```
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+total <- str_length(DNA)
+str_c("Number of A in this DNA is", A_Counts)
+str_c("Number of T in this DNA is", T_Counts)
+# calculating the ratio of A and T in this DNA seq
+(A_Counts + T_Counts)/total *100
+```
+
+## Exercise 1.e:
+
+You have a DNA string(exercise 1.c.). Write a program to be able to replace U with T.
+
+##Solution 1e:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+str_replace_all(DNA, "T", "U")
+```
