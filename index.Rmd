@@ -1,0 +1,31 @@
+---
+title: "R you ready"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: spacelab
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+> **The course**
+**R you Ready** is a course-assignment for bachelor/master students of Biomedical Sciences Leiden University.  
+
+
+> **Lecture materials**
+The materials are adjusted depending on schedules. Please select your group:
+
+- [Day1](Day1)
+- [Day1_Assignment](Day1)
+- [Day1_Assignment_Asnwered](Day1)
+- [Day2](Day2)
+- [Day2_Assignment](Day2)
+- [Day2_Assignment_Asnwered](Day2)
+- [Day3_Test](Day3)
+- [Day3_Test_Answered](Day3)
+
+
+<br/>
+<hr>
+<p style="blockquote">Copyright &copy; 2023 Biomedical Data Sciences (BDS) | LUMC</p>
