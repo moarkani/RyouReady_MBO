@@ -201,7 +201,7 @@ There is a sequence of DNA. This DNA string included how many nucleotides?
 
 `CAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA`
 
-##### Solution 1.c:
+##### Solution 1.b:
 
 ```{r, results='hide' ,class.source = 'fold-hide'}
 DNA <- "ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA"
@@ -289,6 +289,14 @@ str_replace_all(DNA, "A", "T")
 
 You have a DNA string(exercise 1.c.). Write a program to be able to replace U with T.
 
+##### Solution 1d:
+
+```{r, results='hide' ,class.source = 'fold-hide'}
+str_replace_all(DNA, "T", "U")
+
+```
+
+
 ### **Create complement DNA(cDNA)**
 
 We all know:
@@ -303,12 +311,6 @@ In DNA, the nucleotides are deoxyribose sugars attached to a phosphate group and
 
 -   Guanine (G)
 
-##### Solution 1d:
-
-```{r, results='hide' ,class.source = 'fold-hide'}
-str_replace_all(DNA, "T", "U")
-
-```
 
 **Complementary Sequence:** Since DNA has two strands, every DNA sequence has a complementary sequence running parallel. In the complementary sequence, Adenine (A) is always paired with Thymine (T), and Cytosine (C) is always paired with Guanine (G).
 

@@ -647,8 +647,8 @@ nucleotides?</p>
 <p><code>TGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGG</code></p>
 <p><code>AAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTG</code></p>
 <p><code>CAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA</code></p>
-<div id="solution-1.c" class="section level5">
-<h5>Solution 1.c:</h5>
+<div id="solution-1.b" class="section level5">
+<h5>Solution 1.b:</h5>
 <pre class="r fold-hide"><code>DNA &lt;- &quot;ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGGGTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCGCTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGCAGGAAGGCGCACCCCCCCAGCAATCCGCGCGCCGGGACAGAATGCCCTGCAGGAACTTCTTCTGGAAGACCTTCTCCTCCTGCAAATAAAACCTCACCCATGAATGCTCACGCAAGTTTAATTACAGACCTGAA&quot;
 
 
@@ -722,6 +722,10 @@ str_replace_all(DNA, &quot;A&quot;, &quot;T&quot;)</code></pre>
 <h4>Exercise 1d:</h4>
 <p>You have a DNA string(exercise 1.c.). Write a program to be able to
 replace U with T.</p>
+<div id="solution-1d" class="section level5">
+<h5>Solution 1d:</h5>
+<pre class="r fold-hide"><code>str_replace_all(DNA, &quot;T&quot;, &quot;U&quot;)</code></pre>
+</div>
 </div>
 </div>
 <div id="create-complement-dnacdna" class="section level3">
@@ -736,9 +740,6 @@ are:</p>
 <li><p>Cytosine (C)</p></li>
 <li><p>Guanine (G)</p></li>
 </ul>
-<div id="solution-1d" class="section level5">
-<h5>Solution 1d:</h5>
-<pre class="r fold-hide"><code>str_replace_all(DNA, &quot;T&quot;, &quot;U&quot;)</code></pre>
 <p><strong>Complementary Sequence:</strong> Since DNA has two strands,
 every DNA sequence has a complementary sequence running parallel. In the
 complementary sequence, Adenine (A) is always paired with Thymine (T),
@@ -774,7 +775,6 @@ dna</code></pre>
 <pre class="r"><code>dna &lt;- str_replace_all(dna, c(&quot;A&quot; = &quot;t&quot;, &quot;C&quot; =&quot;g&quot;, &quot;G&quot;= &quot;c&quot;, &quot;T&quot;= &quot;a&quot;))
 toupper(dna)</code></pre>
 <pre><code>## [1] &quot;TGAC&quot;</code></pre>
-</div>
 </div>
 </div>
 
