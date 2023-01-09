@@ -17,13 +17,13 @@ knitr::opts_chunk$set(echo = FALSE)
 The materials are adjusted depending on schedules. Please select your group:
 
 - [Day1](Day1)
-- [Day1_Assignment](Day1)
-- [Day1_Assignment_Asnwered](Day1)
+- [Day1_Assignment](Day1_Assignment)
+- [Day1_Assignment_Asnwered](Day1_Assignment_Asnwered)
 - [Day2](Day2)
-- [Day2_Assignment](Day2)
-- [Day2_Assignment_Asnwered](Day2)
-- [Day3_Test](Day3)
-- [Day3_Test_Answered](Day3)
+- [Day2_Assignment](Day2_Assignment)
+- [Day2_Assignment_Asnwered](Day2_Assignment_Asnwered)
+- [Day3_Test](Day3_Test)
+- [Day3_Test_Answered](Day3_Test_Answered)
 
 
 <br/>
