@@ -57,7 +57,7 @@ Write a program that will
 
 2.  **Calculate CG content in cDNA in [percentage]{.underline}.** *(Amount of C + Amount of G)*
 
-3.  **Transcribe the cDNA to RNA. (***Note: A -\> U, C -\> G, U -\> A, G -\> C* **)**
+3.  **Transcribe the cDNA to RNA. (***Note: A -\> U, C -\> G, T -\> A, G -\> C* **)**
 
 4.  **Splicing process. (RNA to spliced-RNA)**
 
